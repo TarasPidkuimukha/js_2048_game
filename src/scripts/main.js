@@ -40,6 +40,14 @@ button.addEventListener('click', (e) => {
 
     return renderBoard();
   }
+
+    if (game.getStatus() === 'lose') {
+    game.restart();
+    score.textContent = game.getScore();
+    lose.classList.add('hidden');
+    return renderBoard();
+  }
+
   game.start();
   renderBoard();
   start.classList.add('hidden');
