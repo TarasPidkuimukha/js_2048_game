@@ -41,10 +41,19 @@ button.addEventListener('click', (e) => {
     return renderBoard();
   }
 
-    if (game.getStatus() === 'lose') {
+  if (game.getStatus() === 'lose') {
     game.restart();
     score.textContent = game.getScore();
     lose.classList.add('hidden');
+
+    return renderBoard();
+  }
+
+  if (game.getStatus() === 'win') {
+    game.restart();
+    score.textContent = game.getScore();
+    win.classList.add('hidden');
+
     return renderBoard();
   }
 
