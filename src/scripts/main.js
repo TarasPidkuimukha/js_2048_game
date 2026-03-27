@@ -24,10 +24,22 @@ function renderBoard() {
     } else {
       fieldCell[i].textContent = value;
     }
+
+    fieldCell[i].className = 'field-cell';
+
+    if (value !== 0) {
+      fieldCell[i].classList.add(`field-cell--${value}`);
+    }
   }
 }
 
 button.addEventListener('click', (e) => {
+  if (game.getStatus() === 'playing') {
+    game.restart();
+    score.textContent = game.getScore();
+
+    return renderBoard();
+  }
   game.start();
   renderBoard();
   start.classList.add('hidden');
